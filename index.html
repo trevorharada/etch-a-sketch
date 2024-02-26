@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css">
+    <title>Etch-a-Sketch</title>
 </head>
 <body>
-    
+    <div class="flex-conainer">
+        <div class="title"><h1>Etch-a-Sketch</h1></div>
+        <div class="content">
+            <div class="sketchBoard"></div>
+            <div class="buttons">
+                <button>Black</button>
+                <button>Grey</button>
+                <button>Eraser</button>
+                <button>Random</button>
+                <button>Restart</button>
+            </div>
+            <div>
+                <input class='user' type="text" placeholder="Size of Board" value="16" 
+                onchange="changeSize(this.value)"/>
+                <button>Set Size</button>
+            </div>
+        </div>
+    </div>
 </body>
+<script src="./main.js"></script>
 </html>
