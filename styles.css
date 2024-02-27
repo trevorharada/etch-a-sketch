@@ -1,5 +1,22 @@
+body {
+    text-align: center;
+}
+
 .sketchBoard {
     height: 500px;
     width: 500px;
+    border: solid black 1px;
     display: grid;
+}
+
+.buttons button {
+    border-radius: 10px;
+    margin: 20px 5px;
+    padding: 10px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
