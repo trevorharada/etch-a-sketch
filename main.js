@@ -1,8 +1,38 @@
 let color = 'white';
+let mode = 'draw';
+let sketchBoard = document.querySelector('.sketchBoard');
+//modes 
+
+let etchaSketchBtn = document.querySelector('.etchaSketchMode');
+let sketchpadBtn = document.querySelector('.sketchpadMode'); 
+
+function etchasketchClick() {
+    let mode = 'draw';
+    etchaSketchBtn.style.backgroundColor ='red';
+    sketchpadBtn.style.backgroundColor = 'white';
+}
+
+function sketchpadClick() {
+    mode = 'noDraw';
+    etchaSketchBtn.style.backgroundColor ='white';
+    sketchpadBtn.style.backgroundColor = 'red';
+    sketchBoard.addEventListener('mousedown', () => {
+        mode = 'draw';
+    });
+
+    sketchBoard.addEventListener('mouseup', () => {
+        mode = 'nodraw';
+    });
+
+}
+
+etchaSketchBtn.addEventListener('click', etchasketchClick);
+sketchpadBtn.addEventListener('click', sketchpadClick);
+
+
 
 //Creates and changes the board size 
 function populateBoard(size) {
-    let sketchBoard = document.querySelector('.sketchBoard');
     let squares = sketchBoard.querySelectorAll('div');
     squares.forEach((div) => div.remove());
     sketchBoard.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -15,6 +45,8 @@ function populateBoard(size) {
         square.addEventListener('mouseover', colorSquare);
         square.style.backgroundColor ='white';
         sketchBoard.insertAdjacentElement('beforeend', square);
+        etchaSketchBtn.style.backgroundColor ='red';
+        sketchpadBtn.style.backgroundColor = 'white';
     }
 }
 
@@ -31,10 +63,12 @@ function changeSize(size) {
 
 //Button functions and event listeners to change color on button click
 function colorSquare() {
-    if (color === 'random') {
-        this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    } else {
-        this.style.backgroundColor = color;
+    if (mode === 'draw') {
+        if (color === 'random') {
+            this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        } else {
+            this.style.backgroundColor = color;
+        }
     }
 }
 
@@ -44,7 +78,8 @@ function blackClick() {
     blackBtn.style.color ='white';
     greyBtn.style.backgroundColor ='white';
     eraserBtn.style.backgroundColor ='white';
-    randomBtn.style.backgroundColor = 'white';
+    randomBtn.style.backgroundImage = 'none';
+    randomBtn.style.color = 'black ';
     colorSquare();
 }
 
@@ -54,7 +89,8 @@ function greyClick() {
     blackBtn.style.color ='black';
     greyBtn.style.backgroundColor ='grey';
     eraserBtn.style.backgroundColor ='white';
-    randomBtn.style.backgroundColor = 'white';
+    randomBtn.style.backgroundImage = 'none';
+    randomBtn.style.color = 'black ';
     colorSquare();
 }
 
@@ -64,7 +100,8 @@ function eraserClick() {
     blackBtn.style.color ='black';
     greyBtn.style.backgroundColor ='white';
     eraserBtn.style.backgroundColor ='#E7B9B3';
-    randomBtn.style.backgroundColor = 'white';
+    randomBtn.style.backgroundImage = 'none';
+    randomBtn.style.color = 'black ';
     colorSquare();
 }
 
@@ -74,7 +111,9 @@ function randomClick() {
     blackBtn.style.color ='black';
     greyBtn.style.backgroundColor ='white';
     eraserBtn.style.backgroundColor ='white';
-    randomBtn.style.backgroundColor = 'white';
+    randomBtn.style.color = 'white';
+    randomBtn.style.backgroundImage = 
+    'linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red)';
     colorSquare();
 }
 
@@ -100,7 +139,8 @@ function restartBoard() {
     blackBtn.style.color ='black';
     greyBtn.style.backgroundColor ='white';
     eraserBtn.style.backgroundColor ='white';
-    randomBtn.style.backgroundColor = 'white';
+    randomBtn.style.backgroundImage = 'none';
+    randomBtn.style.color = 'black ';
     color ='white'
 }
 
