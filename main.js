@@ -7,7 +7,7 @@ let etchaSketchBtn = document.querySelector('.etchaSketchMode');
 let sketchpadBtn = document.querySelector('.sketchpadMode'); 
 
 function etchasketchClick() {
-    let mode = 'draw';
+    mode = 'draw';
     etchaSketchBtn.style.backgroundColor ='red';
     sketchpadBtn.style.backgroundColor = 'white';
 }
@@ -19,7 +19,6 @@ function sketchpadClick() {
     sketchBoard.addEventListener('mousedown', () => {
         mode = 'draw';
     });
-
     sketchBoard.addEventListener('mouseup', () => {
         mode = 'nodraw';
     });
@@ -63,6 +62,8 @@ function changeSize(size) {
 
 //Button functions and event listeners to change color on button click
 function colorSquare() {
+    console.log('in colorSquare');
+    console.log(mode);
     if (mode === 'draw') {
         if (color === 'random') {
             this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
